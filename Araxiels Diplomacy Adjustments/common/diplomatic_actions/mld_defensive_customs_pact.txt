@@ -22,12 +22,7 @@
 		NAND = {
 			is_non_customs_union_subject = yes
 			is_subject_of = scope:target_country
-		}
-		NAND = {
-			is_subject = yes
-			is_subject_type = subject_type_customs_union
-			is_subject_of = root
-		}
+		}						
 	}
 	
 	possible = {
