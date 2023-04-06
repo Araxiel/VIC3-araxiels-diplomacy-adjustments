@@ -1,8 +1,8 @@
 ﻿l_english: 
 
  ai_strategy_spread_revolution: "Spread the Revolution"
- ai_strategy_spread_revolution_desc: "[COUNTRY.GetName] wants to spread the workers revolution."
+ ai_strategy_spread_revolution_desc: "[COUNTRY.GetName] wants to spread the worker's revolution."
  ai_strategy_spread_liberty: "Spread Liberty"
- ai_strategy_spread_liberty_desc: "[COUNTRY.GetName] wants to spread the liberty and freedom."
+ ai_strategy_spread_liberty_desc: "[COUNTRY.GetName] wants to spread liberty and freedom."
 
- ##DIPLOMATIC_ACCEPTANCE_COMMON_CUSTOMS_UNION: "[COUNTRY.GetName] wants to spread the liberty and freedom."
+ ##DIPLOMATIC_ACCEPTANCE_COMMON_CUSTOMS_UNION: "[COUNTRY.GetName] wants to spread liberty and freedom."
