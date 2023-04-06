@@ -342,6 +342,7 @@
 						who = scope:actor
 						type = customs_union				
 					}
+					is_junior_in_customs_union = true
 				}
 				add = {
 					desc = "DIPLOMATIC_ACCEPTANCE_CUSTOMS_UNION"

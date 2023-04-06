@@ -1,0 +1,437 @@
+﻿#MLD
+ai_strategy_spread_revolution = {
+	icon = "gfx/interface/icons/ai_strategy_icons/revolutionary.dds"
+	
+	type = diplomatic
+	
+	wanted_army_ratio = {
+		value = 150000
+	}
+	
+	wanted_navy_ratio = {
+		value = 400000
+	}
+	
+	undesirable_infamy_level = {
+		value = 50
+	}
+	
+	unacceptable_infamy_level = {
+		value = 100
+	}
+	
+	ideological_opinion_effect_mult = {
+		value = 2.5
+	}
+	
+	wargoal_maneuvers_fraction = {
+		value = 0.15
+	}		
+	
+	diplomatic_play_neutrality = {
+		value = 25
+	}
+	
+	diplomatic_play_boldness = {
+		value = 50
+	}
+	
+	recklessness = {
+		value = 1.1
+	}
+	
+	aggression = {
+		value = 1
+
+		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
+		if = {
+			limit = {
+				has_attitude = {
+					who = scope:target_country
+					attitude = antagonistic
+				}					
+			}
+			multiply = 0.5
+		}	
+
+		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
+		if = {
+			limit = {
+				"ai_ideological_opinion(scope:target_country)" < 0
+			}
+			
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.2
+				add = 1
+				max = 4.0
+			}				
+		}	
+		else = {
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.05
+				add = 1
+				min = 0.5
+			}			
+		}
+
+		if = {
+            limit = {
+                any_character = {
+                    is_ruler = yes
+                    has_ideology = ideology_vanguardist
+                }
+            }
+            add = 3
+        }		
+	}
+
+	building_group_weights = {
+		bg_army = 1.5
+	}
+	
+	secret_goal_weights = {
+		protect = 1
+		conquer = 1.5
+		antagonize = 2
+	}
+
+	wargoal_weights = {
+		conquer_state = 1.5
+		return_state = 1.5
+		make_puppet = 2.5
+		make_dominion = 2.5
+		make_vassal = 2
+		regime_change = 2
+	}
+		
+	possible = {
+		OR = {
+			has_radical_leftist_government = yes
+			has_radical_leftist_economy = yes
+			has_journal_entry = je_communism_1
+			has_journal_entry = je_communism_2
+			has_journal_entry = je_vanguard
+		}
+	}
+	
+	weight = {
+		value = 5
+
+		if = {
+			limit = { country_rank = rank_value:great_power }
+			add = 5
+		}	
+		
+		if = {
+			limit = {
+				exists = ruler
+				ruler = {
+					has_ideology = ideology_vanguardist
+				}
+			}
+			add = 15
+		}	
+
+		if = {
+			limit = {
+				exists = ruler
+				ruler = {
+					has_ideology = ideology_communist
+				}
+			}
+			add = 10
+		}	
+
+		if = {
+			limit = {
+				has_radical_leftist_government = yes
+			}
+			add = 5
+		}
+
+	}
+}
+
+ai_strategy_spread_liberty = {
+	icon = "gfx/interface/icons/ai_strategy_icons/revolutionary.dds"
+	
+	type = diplomatic
+	
+	wanted_army_ratio = {
+		value = 150000
+	}
+	
+	wanted_navy_ratio = {
+		value = 300000
+	}
+	
+	undesirable_infamy_level = {
+		value = 25
+	}
+	
+	unacceptable_infamy_level = {
+		value = 50
+	}
+	
+	ideological_opinion_effect_mult = {
+		value = 1.75
+	}
+	
+	wargoal_maneuvers_fraction = {
+		value = 0.15
+	}		
+	
+	diplomatic_play_neutrality = {
+		value = 20
+	}
+	
+	diplomatic_play_boldness = {
+		value = 0
+	}
+	
+	recklessness = {
+		value = 1
+	}
+	
+	aggression = {
+		value = 1
+
+		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
+		if = {
+			limit = {
+				has_attitude = {
+					who = scope:target_country
+					attitude = antagonistic
+				}					
+			}
+			multiply = 0.5
+		}	
+
+		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
+		if = {
+			limit = {
+				"ai_ideological_opinion(scope:target_country)" < 0
+			}
+			
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.2
+				add = 1
+				max = 2.0
+			}				
+		}	
+		else = {
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.05
+				add = 1
+				min = 0.5
+			}			
+		}
+		if = {
+			limit = {
+				scope:target_country = {
+					has_law = law_type:law_slave_trade
+					has_law = law_type:law_legacy_slavery
+				}
+			}
+			multiply = 1.15
+		}
+		if = {
+			limit = {
+				scope:target_country = {
+					OR = {
+						has_law = law_type:law_autocracy
+						has_law = law_type:law_oligarchy
+					}
+				}
+			}
+			multiply = 1.2
+		}
+		if = {
+			limit = {
+				scope:target_country = {
+					has_law = law_type:law_landed_voting
+				}
+			}
+			multiply = 1.05
+		}
+		if = {
+			limit = {
+				scope:target_country = {
+					OR = {
+						has_law = law_type:law_ethnostate
+						has_law = law_type:law_national_supremacy
+					}
+				}
+			}
+			multiply = 1.15
+		}
+	}
+
+	building_group_weights = {
+		bg_army = 1.5
+	}
+	
+	secret_goal_weights = {
+		protect = 1
+		conquer = 1.5
+		antagonize = 1.5
+		dominate = {
+			if = {
+				limit = {
+					has_strategic_adjacency = scope:target_country
+					scope:target_country = { 
+						has_law = law_type:law_isolationism
+						capital.region = sr:region_japan	
+					}
+				}
+				add = 1000
+			}		
+			if = {
+				limit = {
+					has_strategic_adjacency = scope:target_country
+					scope:target_country = { 
+						has_law = law_type:law_isolationism
+						NOT = { capital.region = sr:region_japan }	
+					}
+				}
+				add = 100
+			}
+			if = {
+				limit = {
+					has_strategic_adjacency = scope:target_country
+					root.country_rank > scope:target_country.country_rank
+					scope:target_country = {
+						NOR = { 
+							has_law = law_type:law_free_trade 
+							has_law = law_type:law_isolationism
+						}
+					}
+				}
+				add = 50
+			}		
+		}
+	}
+
+	wargoal_weights = {
+		take_treaty_port = 1.5
+		return_state = 2
+		make_dominion = 1.25
+		make_vassal = 1.5	
+		regime_change = 1.5
+		ban_slavery = 2.5
+		liberate_subject = 2
+		liberate_country = 2
+		open_market = {
+			value = 0
+		
+			if = {
+				limit = {
+					can_reach_target_country = yes
+					scope:target_country = {
+						has_law = law_type:law_isolationism
+					}
+				}
+				add = 1000
+			}
+		}
+	}
+		
+	possible = {
+		OR = {
+			AND = {
+				exists = ruler
+				ruler = {
+					OR = {
+						has_ideology = ideology_radical
+						has_ideology = ideology_social_democrat
+					}
+				}
+			}
+			has_ruling_interest_group = ig_intelligentsia
+			has_ruling_interest_group = ig_trade_unions
+			has_journal_entry = je_springtime_of_the_peoples
+		}
+		has_law = law_type:law_slavery_banned
+		NOT = { 
+			has_law = law_type:law_ethnostate
+			has_law = law_type:law_autocracy
+			has_law = law_type:law_oligarchy
+			has_law = law_type:law_theocracy
+		}
+		is_country_type = recognized
+		NOT = { has_law = law_type:law_isolationism }
+		OR = {
+			country_rank = rank_value:major_power
+			country_rank = rank_value:great_power
+			country_rank = rank_value:minor_power
+		}
+	}
+	
+	weight = {
+		value = 5
+		
+		if = {
+			limit = { country_rank = rank_value:major_power }
+			add = 5
+		}	
+
+		if = {
+			limit = {
+				exists = ruler
+				ruler = {
+					has_ideology = ideology_radical
+				}
+			}
+			add = 10
+		}	
+
+		if = {
+			limit = {
+				exists = ruler
+				ruler = {
+					has_ideology = ideology_social_democrat
+				}
+			}
+			add = 5
+		}
+
+		if = {
+			limit = {
+				has_law = law_type:law_universal_suffrage
+			}
+			add = 5
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_racial_segregation
+			}
+			multiply = 0.75
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_landed_voting
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_presidential_republic
+					has_law = law_type:law_parliamentary_republic
+				}
+			}
+			multiply = 1.5
+		}
+	}
+}
+

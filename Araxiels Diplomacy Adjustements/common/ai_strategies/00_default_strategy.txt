@@ -198,7 +198,7 @@ ai_strategy_default = {
 		# Compare ranks - higher rank than us has increased value, lower rank decreased value
 		add = {
 			value = scope:target_country.country_rank
-			multiply = 8
+			multiply = 5
 		}
 		subtract = {
 			value = country_rank
@@ -765,9 +765,11 @@ ai_strategy_default = {
 		# Aggression against radical leftists
 		if = {
 			limit = {	
-				has_radical_leftist_government = no
-				scope:target_country = {
-					has_radical_leftist_government = yes
+				AND = {
+					has_radical_leftist_government = no
+					scope:target_country = {
+						has_radical_leftist_government = yes
+					}
 				}
 			}
 			add = 0.5
@@ -1977,8 +1979,6 @@ ai_strategy_default = {
 					
 				}
 				multiply = 1.5
-
-				
 			}		
 
 			# Shouldn't usually upset diplomatic pacts unless they're bankrupt or infamous
@@ -2072,7 +2072,7 @@ ai_strategy_default = {
 						has_law = law_type:law_theocracy	
 					}
 				}
-				multiply = 2
+				multiply = 2.5
 			}
 			
 
