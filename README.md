@@ -1,4 +1,4 @@
-# Araxiels Diplomacy Adjustments Repository
+# Araxiel's Diplomacy Adjustments Repository
 
 Adjusts the following AI behavior:
 - Less neutrality past 1900 [Incentiveses larger conflicts in the late-late game]
